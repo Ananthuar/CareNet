@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "521886883437",
+    "project_id": "care-net-bb873",
+    "storage_bucket": "care-net-bb873.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521886883437:android:f74e281aa07a256b3ae964",
+        "android_client_info": {
+          "package_name": "com.example.carenet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3wjEOKedA-7UsTwr7npkbDFdKEa2n47c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
