@@ -1,5 +1,7 @@
 
-import 'package:carenet/screens/basicscreens/homescreen/sidemenu/menubar.dart';
+import 'package:carenet/screens/basicscreens/homescreen/sidemenu/show_menu/menubar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,41 +19,74 @@ final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      key: _scaffoldKey,
-      drawer: const HomeMenuBar(),
-      body:SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Transform.translate(
-                    offset: const Offset(20, 0),
-                    child:IconButton(
-                      icon: const Icon(
-                        Icons.account_circle,
-                        size: 30,
-                      ),
-                      onPressed: (){
-                        _scaffoldKey.currentState?.openDrawer();
-                      },
+  return Scaffold(
+    key: _scaffoldKey,
+    drawer: const HomeMenuBar(),
+    body: SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Transform.translate(
+                  offset: const Offset(20, 0),
+                  child: IconButton(
+                    icon: const Icon(
+                      Icons.account_circle,
+                      size: 30,
                     ),
+                    onPressed: (){
+                      _scaffoldKey.currentState?.openDrawer();
+                    },
                   ),
-                  Transform.translate(
-                    offset: const Offset(45, 0),
-                    child:  const Text(
-                      'Hey, Care Net..!',
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 11, 11, 11),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w900
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-               Row(
+                ),
+                Transform.translate(
+                  offset: const Offset(45, 0),
+                  child: FirebaseAuth.instance.currentUser != null ? FutureBuilder<QuerySnapshot>(
+                    future: FirebaseFirestore.instance.collection('userProfile').where('email', isEqualTo: FirebaseAuth.instance.currentUser!.email).get(),
+                    builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return const Text("Something went wrong");
+                      }
+
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.data != null && snapshot.data!.docs.isNotEmpty) {
+                          Map<String, dynamic> data = snapshot.data!.docs.first.data() as Map<String, dynamic>;
+                          var name=data['full_name'];
+                          return Text(
+                            'Hey, $name..!',
+                            style: const TextStyle(
+                              color: Color.fromARGB(255, 11, 11, 11),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900
+                            ),
+                          );
+                        } else {
+                          return const Text(
+                            'Hey, Care Net..!',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 11, 11, 11),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900
+                            ),
+                          );
+                        }
+                      }
+
+                      return const CircularProgressIndicator();
+                    },
+                  ) : const Text(
+                            'Hey, Care Net..!',
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 11, 11, 11),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900
+                            ),
+                          )
+                ),
+              ],
+            ),
+            Row(
                 children: [
                   Column(
                     children: [

@@ -6,52 +6,51 @@ import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
   final Widget toPass;
-  const WelcomePage(
-    {super.key,
+  const WelcomePage({
+    super.key,
     required this.toPass,
-    }
-  );
-  
+  });
 
   @override
   Widget build(BuildContext context) {
     return Background(
-        child: SingleChildScrollView(
-          child: SafeArea(
-            child: Responsive(
-              desktop: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Expanded(
-                    child: WelcomeImage(),
-                  ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 450,
-                          child: LoginAndSignupBtn(pass: toPass,),
+      child: SingleChildScrollView(
+        child: SafeArea(
+          child: Responsive(
+            desktop: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Expanded(
+                  child: WelcomeImage(),
+                ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 450,
+                        child: LoginAndSignupBtn(
+                          pass: toPass,
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-              mobile: MobileWelcomeScreen(toPass: toPass,),
+                ),
+              ],
+            ),
+            mobile: MobileWelcomeScreen(
+              toPass: toPass,
             ),
           ),
         ),
-      );
+      ),
+    );
   }
 }
 
 class MobileWelcomeScreen extends StatelessWidget {
   final Widget toPass;
-  const MobileWelcomeScreen({
-    super.key,
-    required this.toPass
-  });
+  const MobileWelcomeScreen({super.key, required this.toPass});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +63,7 @@ class MobileWelcomeScreen extends StatelessWidget {
             const Spacer(),
             Expanded(
               flex: 8,
-              child: LoginAndSignupBtn(pass:toPass),
+              child: LoginAndSignupBtn(pass: toPass),
             ),
             const Spacer(),
           ],

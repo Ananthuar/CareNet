@@ -38,11 +38,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
     // Listen for video playback completion
     videoPlayerController.addListener(() {
-      if (videoPlayerController.value.position >= videoPlayerController.value.duration) {
+      if (videoPlayerController.value.position >=
+          videoPlayerController.value.duration) {
         if (isInternetAvailable) {
           // Video playback ended, navigate to main screen
           Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (ctx) => const IndexScreen()),
+            MaterialPageRoute(builder: (ctx) => IndexScreen()),
           );
         }
       }
@@ -52,8 +53,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Future<void> checkInternetAvailability() async {
     final connectivityResult = await Connectivity().checkConnectivity();
     setState(() {
-      isInternetAvailable =
-          connectivityResult == ConnectivityResult.mobile || connectivityResult == ConnectivityResult.wifi;
+      isInternetAvailable = connectivityResult == ConnectivityResult.mobile ||
+          connectivityResult == ConnectivityResult.wifi;
     });
 
     // Show snackbar based on internet availability
@@ -64,8 +65,8 @@ class _SplashScreenState extends State<SplashScreen> {
           duration: Duration(seconds: 5),
         ),
       );
-      
-    videoPlayerController.setLooping(true);
+
+      videoPlayerController.setLooping(true);
     }
   }
 

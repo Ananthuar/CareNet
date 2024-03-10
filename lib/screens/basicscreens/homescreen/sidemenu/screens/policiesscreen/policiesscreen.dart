@@ -18,10 +18,7 @@ class PoliciesScreen extends StatelessWidget {
           Center(
             child: Text(
               'Policies',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 25
-              ),
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25),
             ),
           ),
           SizedBox(

@@ -7,17 +7,16 @@ import 'components/signup_form.dart';
 
 class SignUpScreen extends StatelessWidget {
   final Widget toPass;
-   const SignUpScreen({
-    super.key,
-    required this.toPass
-  });
+  const SignUpScreen({super.key, required this.toPass});
 
   @override
   Widget build(BuildContext context) {
-    return  Background(
+    return Background(
       child: SingleChildScrollView(
         child: Responsive(
-          mobile:  MobileSignupScreen(toPass: toPass,),
+          mobile: MobileSignupScreen(
+            toPass: toPass,
+          ),
           desktop: Row(
             children: [
               const Expanded(
@@ -29,7 +28,9 @@ class SignUpScreen extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 450,
-                      child: SignUpForm(toPass: toPass,),
+                      child: SignUpForm(
+                        toPass: toPass,
+                      ),
                     ),
                     const SizedBox(height: defaultPadding / 2),
                     // SocalSignUp()
@@ -46,10 +47,7 @@ class SignUpScreen extends StatelessWidget {
 
 class MobileSignupScreen extends StatelessWidget {
   final Widget toPass;
-  const MobileSignupScreen({
-    super.key,
-    required this.toPass
-  });
+  const MobileSignupScreen({super.key, required this.toPass});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +60,9 @@ class MobileSignupScreen extends StatelessWidget {
             const Spacer(),
             Expanded(
               flex: 8,
-              child: SignUpForm(toPass: toPass,),
+              child: SignUpForm(
+                toPass: toPass,
+              ),
             ),
             const Spacer(),
           ],

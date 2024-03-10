@@ -1,4 +1,3 @@
-
 import 'package:carenet/backend/welcome/welcome.dart';
 import 'package:carenet/screens/basicscreens/donationscreen/checkdonations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -18,7 +17,9 @@ class DonationsScreen extends StatelessWidget {
           if (snapshot.hasData) {
             return const CheckDonations();
           } else {
-            return const WelcomePage(toPass: CheckDonations(),); 
+            return const WelcomePage(
+              toPass: CheckDonations(),
+            );
           }
         }
       },

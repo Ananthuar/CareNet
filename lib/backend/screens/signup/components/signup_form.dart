@@ -4,18 +4,14 @@ import 'package:carenet/backend/screens/login/login.dart';
 import 'package:carenet/backend/screens/signup/activities/signupactivity.dart';
 import 'package:flutter/material.dart';
 
-
 // ignore: must_be_immutable
 class SignUpForm extends StatelessWidget {
   final Widget toPass;
-    SignUpForm({
-    super.key,
-    required this.toPass
-  });
+  SignUpForm({super.key, required this.toPass});
 
-  String email='';
+  String email = '';
 
-  String password='';
+  String password = '';
 
   final emailController = TextEditingController();
 
@@ -58,8 +54,8 @@ class SignUpForm extends StatelessWidget {
           const SizedBox(height: defaultPadding / 2),
           ElevatedButton(
             onPressed: () {
-              email=emailController.text;
-              password=passwordController.text;
+              email = emailController.text;
+              password = passwordController.text;
               signUpActivity(email, password, context);
             },
             child: Text("Sign Up".toUpperCase()),
@@ -72,7 +68,9 @@ class SignUpForm extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return LoginScreen(toPass: toPass,);
+                    return LoginScreen(
+                      toPass: toPass,
+                    );
                   },
                 ),
               );

@@ -5,7 +5,6 @@ class ContactScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -17,14 +16,13 @@ class ContactScreen extends StatelessWidget {
             height: 20,
           ),
           const Center(
-            child:Text(
-              'Contact Us',
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 25,
-              ),
-            )
-          ),
+              child: Text(
+            'Contact Us',
+            style: TextStyle(
+              fontWeight: FontWeight.w600,
+              fontSize: 25,
+            ),
+          )),
           const SizedBox(
             height: 20,
           ),

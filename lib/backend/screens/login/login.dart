@@ -6,19 +6,16 @@ import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
   final Widget toPass;
-  const LoginScreen(
-    {
-      super.key,
-      required this.toPass
-    }
-  );
+  const LoginScreen({super.key, required this.toPass});
 
   @override
   Widget build(BuildContext context) {
     return Background(
       child: SingleChildScrollView(
         child: Responsive(
-          mobile: MobileLoginScreen(toPass: toPass,),
+          mobile: MobileLoginScreen(
+            toPass: toPass,
+          ),
           desktop: Row(
             children: [
               const Expanded(
@@ -30,7 +27,9 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: 450,
-                      child: LoginForm(toPass: toPass,),
+                      child: LoginForm(
+                        toPass: toPass,
+                      ),
                     ),
                   ],
                 ),
@@ -45,14 +44,11 @@ class LoginScreen extends StatelessWidget {
 
 class MobileLoginScreen extends StatelessWidget {
   final Widget toPass;
-  const MobileLoginScreen({
-    super.key,
-    required this.toPass
-  });
+  const MobileLoginScreen({super.key, required this.toPass});
 
   @override
   Widget build(BuildContext context) {
-    return  Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         const LoginScreenTopImage(),
@@ -61,7 +57,8 @@ class MobileLoginScreen extends StatelessWidget {
             const Spacer(),
             Expanded(
               flex: 8,
-              child: LoginForm(toPass: toPass,
+              child: LoginForm(
+                toPass: toPass,
               ),
             ),
             const Spacer(),

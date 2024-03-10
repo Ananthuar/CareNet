@@ -3,7 +3,6 @@ import 'package:carenet/backend/screens/login/login.dart';
 import 'package:carenet/backend/screens/signup/signup.dart';
 import 'package:flutter/material.dart';
 
-
 class LoginAndSignupBtn extends StatelessWidget {
   final Widget pass;
   const LoginAndSignupBtn({
@@ -21,7 +20,7 @@ class LoginAndSignupBtn extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return LoginScreen(toPass:pass);
+                  return LoginScreen(toPass: pass);
                 },
               ),
             );
@@ -37,7 +36,9 @@ class LoginAndSignupBtn extends StatelessWidget {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return SignUpScreen(toPass: pass,);
+                  return SignUpScreen(
+                    toPass: pass,
+                  );
                 },
               ),
             );
